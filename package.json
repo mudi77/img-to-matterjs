@@ -1,0 +1,17 @@
+{
+  "name": "img-to-matterjs",
+  "version": "1.0.0",
+  "description": "Convert shape from images into matter.js objects. ",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Igor Collak",
+  "license": "ISC",
+  "bin": {
+    "itm": "./cli.js"
+  },
+  "devDependencies": {
+    "canvas": "^2.2.0"
+  }
+}
