@@ -3,7 +3,7 @@
 Images to Matterjs (img-to-matterjs) is simple images transformation library. It transforms image(shape from image) into json file with matter js compatible vertices for creating custom matterjs physics objects.
 
 # What it does
-
+![Description](itm4.gif)
 
 # How it does
 It loads images and convert into canvas image object than slice image than grab data bitmaps and iterate over to determine edge all founded sub blocks are redrawed to right position. Concave shape can be produced. Images are always processed horizontally so if image height > image width image is rotated. 
