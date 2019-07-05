@@ -6,7 +6,7 @@ Images to Matterjs (img-to-matterjs) is simple images transformation library. It
 ![Description](itm4.gif)
 
 # How it does
-It loads images and convert into canvas image object than slice image than grab data bitmaps and iterate over to determine edge all founded sub blocks are redrawed to right position. Concave shape can be produced. Images are always processed horizontally so if image height > image width image is rotated. 
+It loads images and convert into canvas image object then slice image then grab data bitmaps and iterate over to determine edge all founded sub blocks are redrawed to right position. Concave shape can be produced. Images are always processed horizontally so if image height > image width image is rotated. 
 
 # Usage 
 ### Input json Config example:
@@ -22,10 +22,15 @@ It loads images and convert into canvas image object than slice image than grab 
 ```
 ### Input json Config explained:
 >**input**: images input directory
+
 >**output**: json output directory
->**imgIsJson**: whether produce one json with all images or json per image 
+
+>**imgIsJson**: whether produce one json with all images or json per image
+
 >**splitBy**: define thickness of one strip relative to image width value 0.1 means tenth of width
+
 >**scale**: define scale factor value 1 means don't scale
+
 >**precise**: defines how high detail (density) of vertices will be produced value 0.25 means reduction down to one quarter
 
 

@@ -19,6 +19,5 @@ if(!outputJsonConfig){
 
 entry(outputJsonConfig);
 
-
 //TO DO: add simple help
 
