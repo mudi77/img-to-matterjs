@@ -13,7 +13,7 @@
 let fs = require('./fsLocal');
 let processImages = require('./processImages');
 let extractVertices = require('./extractVertices');
-let optimise = require('../optimise');
+let optimise = require('./optimise');
 let utils = require('./utils');
 
 
