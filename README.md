@@ -9,6 +9,19 @@ Images to Matterjs (img-to-matterjs) is simple images transformation library. It
 It loads images and convert into canvas image object then slice image then grab data bitmaps and iterate over to determine edge all founded sub blocks are redrawed to right position. Concave shape can be produced. Images are always processed horizontally so if image height > image width image is rotated. 
 
 # Usage 
+
+### Installation steps
+```
+npm install img-to-matterjs
+```
+### Installation steps (source)
+```
+-clone repository and npm install
+-from canvas module root run: npm install
+-run canvas rebuild and clear bin cache: npm rebuild canvas --update-binary
+-in order to use CLI make link to global env. by: npm link
+```
+
 ### Input json Config example:
 ```
 {
@@ -65,10 +78,12 @@ itm(config);
 # Troubleshooting
 
 - sometimes canvas lib has to be re-istalled/re-builded from its root directory
+- use absolute path to input files
 
 # Next features
                            
 - simple CLI help
+- relative paths support
 - detection of central continuous shape
 - jpg support
 - colored images support
