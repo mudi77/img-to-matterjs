@@ -78,12 +78,10 @@ itm(config);
 # Troubleshooting
 
 - sometimes canvas lib has to be re-istalled/re-builded from its root directory
-- use absolute path to input files
 
 # Next features
                            
 - simple CLI help
-- relative paths support
 - detection of central continuous shape
 - jpg support
 - colored images support

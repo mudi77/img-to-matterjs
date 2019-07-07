@@ -4,14 +4,15 @@
   "description": "Convert shape from images into matter.js objects. ",
   "main": "./src/index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "itm": "./src/cli.js"
   },
   "author": "Igor Collak",
   "license": "ISC",
   "bin": {
     "itm": "./src/cli.js"
   },
-  "devDependencies": {
+  "dependencies": {
     "canvas": "^2.2.0"
   },
   "engines": {
