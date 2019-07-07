@@ -14,13 +14,6 @@ It loads images and convert into canvas image object then slice image then grab 
 ```
 npm install img-to-matterjs
 ```
-### Installation steps (source)
-```
--clone repository and npm install
--from canvas module root run: npm install
--run canvas rebuild and clear bin cache: npm rebuild canvas --update-binary
--in order to use CLI make link to global env. by: npm link
-```
 
 ### Input json Config example:
 ```
@@ -63,8 +56,10 @@ let config = {
 itm(config);
 ```
 ### Run via CLI
+
+From within img-to-matterjs module run:
 ```
-> itm conf.json
+> npm run itm <path_to_config.json>
 ```
 
 # Limitations
