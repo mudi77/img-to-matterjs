@@ -8,8 +8,8 @@ Images to Matterjs (img-to-matterjs) is simple images transformation library. It
 # How it does
 It loads images and convert into canvas image object then slice image then grab data bitmaps and iterate over to determine edge all founded sub blocks are redrawed to right position. Concave shape can be produced. Images are always processed horizontally so if image height > image width image is rotated. 
 
-# Usage 
 
+# Usage 
 ### Installation steps
 ```
 npm install img-to-matterjs
@@ -18,8 +18,8 @@ npm install img-to-matterjs
 ### Input json Config example:
 ```
 {
-    "input": "./img/src",
-    "output": "./output/jsons",
+    "input": "img/src",
+    "output": "output/jsons",
     "imgIsJson": false,
     "splitBy": 0.10,
     "scale": 1,
@@ -45,8 +45,8 @@ npm install img-to-matterjs
 let itm = require('img-to-matterjs');
 
 let config = {
-    "input": "./img/src",
-    "output": "./output/jsons",
+    "input": "img/src",
+    "output": "output/jsons",
     "imgIsJson": false,
     "splitBy": 0.10,
     "scale": 1,
@@ -62,20 +62,19 @@ From within img-to-matterjs module run:
 > npm run itm <path_to_config.json>
 ```
 
-# Limitations
 
+# Limitations
 - only .png images supported for now
 - only images on white background with black shape supported for now 
 - only images with one shape continuous object supported for now
 - it depends on Node Canvas lib
 - it requires at least node 8 
 
-# Troubleshooting
 
+# Troubleshooting
 - sometimes canvas lib has to be re-istalled/re-builded from its root directory
 
-# Next features
-                           
+# Next features                           
 - simple CLI help
 - detection of central continuous shape
 - jpg support
