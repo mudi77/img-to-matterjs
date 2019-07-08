@@ -9,6 +9,10 @@
   },
   "author": "Igor Collak",
   "license": "ISC",
+  "repository" : { 
+    "type" : "git",
+    "url" : "https://github.com/mudi77/img-to-matterjs.git"
+  },
   "bin": {
     "itm": "./src/cli.js"
   },
