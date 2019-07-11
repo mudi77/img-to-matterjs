@@ -10,7 +10,7 @@ let utils = require('./utils');
  */
 module.exports = async function processImages(imageList, conf){
     if(!imageList) return;
-    console.log("processing runnig..");        
+    console.log("process runnig..");        
 
     this.createCanvasImage = async (img, callback) => {
 

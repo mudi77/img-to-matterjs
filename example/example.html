@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<style>
+    #canvasContainer{
+        position:absolute;
+        top:20%;
+        left:3%;   
+        width: auto;   
+        border:solid 1px grey;
+    }
+    #imgContainer{
+        position:absolute;
+        top:20%;
+        left:50%; 
+        width: auto;        
+        border:solid 1px grey;
+    }
+    body {
+        text-align: center;
+        font-size: 30px;              
+        font-family: Calibri; 
+    }
+</style>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/matter-js/0.12.0/matter.min.js"></script>
+<script src="./arrow.json"></script>
+
+<script>       
+
+    let example = {        
+            World : {},
+            matterjsInit: () => {        
+                let engine = Matter.Engine.create({enableSleeping : true});
+                example.World = engine.world; 
+
+                let render = Matter.Render.create({
+                    element: document.getElementById("canvasContainer"), 
+                    canvas: document.getElementById("canvas"),            
+                    engine: engine,
+                    enableSleeping: false,
+                    timeScale:1.5,
+                    velocityIterations:5,
+                    positionIterations:5,
+                    constraintsiterations:4,
+
+                    options: {
+                        background: 'transparent',
+                        width: parent.clientWidth,
+                        height: parent.clientHeight,
+                        wireframes: false,
+                        showSleeping: false,
+                        showDebug: false,
+                        showBroadphase: false,
+                        showBounds: false,
+                        showVelocity: false,
+                        showCollisions: false,
+                        showSeparations: false,
+                        showAxes: false,
+                        showAngleIndicator: false,
+                        wireframeBackground: "transparent",
+                        showConvexHulls: false
+                    }});
+
+                Matter.Render.run(render);
+            },
+            fixVertices: function (body) {
+                let vertices = []
+                for (let i = 0; i < body.parts.length; i++) {
+                    vertices = vertices.concat(body.parts[i].vertices);
+                }
+            
+                Matter.Vertices.clockwiseSort(vertices);
+            
+                let adjustedVertices = [];
+                for (let i = 0; i < vertices.length; i++) {
+                    adjustedVertices.push({
+                        x: vertices[i].x - body.position.x,
+                        y: vertices[i].y - body.position.y
+                    })
+                }
+            
+                const hull = Matter.Vertices.hull(adjustedVertices);
+                const hullCentre = Matter.Vertices.centre(hull);
+            
+                Matter.Body.setVertices(body, hull);
+                Matter.Vertices.translate(body.vertices, hullCentre);
+            },      
+            createMatterObject : () => {
+                let body = Matter.Body.create(
+                    {
+                        isSleeping:false,
+                        restitution:0,
+                        sleepTreshold:20,
+                        slop:0.01,
+                        timeScale:0.8,
+                        torque:0        
+                    },
+                );                
+                
+                let subBodies = [];              
+                let data = arrow.data; 
+                
+                for(let i = 0; i < data.length; i++){
+                    let subParts = data[i];
+                    for(let subPart in subParts){
+                        let sides = subParts[subPart];  
+                        let slice = [];
+
+                        for(let side in sides){                                                 
+                            slice = slice.concat(sides[side].data);   
+                        }
+        
+                        let sorted = Matter.Vertices.clockwiseSort(slice); 
+                        let center = Matter.Vertices.centre(sorted);
+                            
+                        if(!center.x || !center.y) continue;
+
+                        let subBody = Matter.Body.create({
+                            position: center,
+                            vertices: sorted,
+                            isStatic: true,                        
+                            parts: [],
+                            sprite: null                   
+                        });
+
+                        example.fixVertices(subBody);
+                        subBodies.push(subBody);
+                    }
+                }  
+
+                Matter.Body.setParts(body, subBodies, false); 
+                Matter.Body.setPosition(body, {x:250,y:180});
+                Matter.World.addBody(example.World, body); 
+            },        
+            test: () => {
+                example.matterjsInit();                    
+                example.createMatterObject();           
+            }
+        }
+
+    window.onload = () => {
+        example.test();
+    }
+
+</script>
+
+</head>
+
+<body>
+    Image to MatterJs example
+    <div id="canvasContainer">
+        <canvas id="canvas" width="600" height="400"></canvas> 
+    </div>
+    <div id="imgContainer">
+        <img src="./arrow.png"></img>
+    </div>
+
+</body>
+</html>
